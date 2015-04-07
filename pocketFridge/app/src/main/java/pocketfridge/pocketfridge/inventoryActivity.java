@@ -1,23 +1,30 @@
 package pocketfridge.pocketfridge;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-
 
 public class inventoryActivity extends Activity {
+
+    ArrayList<String> list = new ArrayList<String>();
+    ArrayAdapter<String> adapter;
+    private String itemToAdd = "";
+    final Context context = this;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,14 +33,15 @@ public class inventoryActivity extends Activity {
 
         final ListView listview2 = (ListView) findViewById(R.id.listView);
 
-        String[] inventory = new String[] { "Milk", "Eggs", "Biscuits", "Orange Juice", "Beef", "Pizza"};
-
-        final ArrayList<String> list = new ArrayList<String>();
-        for (int i = 0; i < inventory.length; ++i) {
-            list.add(inventory[i]);
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            ArrayList<String> listToAdd = extras.getStringArrayList("addToList");
+            for(int i = 0; i < listToAdd.size(); i++) {
+                list.add(listToAdd.get(i).toString());
+            }
         }
 
-        final StableArrayAdapter adapter = new StableArrayAdapter(this,
+        adapter = new ArrayAdapter(this,
                 android.R.layout.simple_list_item_1, list);
         listview2.setAdapter(adapter);
 
@@ -42,7 +50,17 @@ public class inventoryActivity extends Activity {
             @Override
             public void onItemClick(AdapterView<?> parent, final View view,
                                     int position, long id) {
-                final String item = (String) parent.getItemAtPosition(position);
+                AlertDialog.Builder adb=new AlertDialog.Builder(inventoryActivity.this);
+                adb.setTitle("Information");
+                adb.setMessage("Calories: 200");
+                final int positionToRemove = position;
+                adb.setNegativeButton("Done", null);
+                adb.setPositiveButton("Delete", new AlertDialog.OnClickListener(){
+                    public void onClick(DialogInterface dialog, int which) {
+                        list.remove(positionToRemove);
+                        adapter.notifyDataSetChanged();
+                    }});
+                adb.show();
 
             }
 
@@ -84,28 +102,43 @@ public class inventoryActivity extends Activity {
         });
     }
 
-    private class StableArrayAdapter extends ArrayAdapter<String> {
+    public void addInventoryItem(View view) {
+        Button button = (Button) findViewById(R.id.addInventoryItem);
 
-        HashMap<String, Integer> mIdMap = new HashMap<String, Integer>();
+        button.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                builder.setTitle("Add Inventroy Item");
 
-        public StableArrayAdapter(Context context, int textViewResourceId,
-                                  List<String> objects) {
-            super(context, textViewResourceId, objects);
-            for (int i = 0; i < objects.size(); ++i) {
-                mIdMap.put(objects.get(i), i);
+                // Set up the input
+                final EditText input = new EditText(context);
+                // Specify the type of input expected; this, for example, sets the input as a password, and will mask the text
+                input.setInputType(InputType.TYPE_CLASS_TEXT);
+                builder.setView(input);
+
+                // Set up the buttons
+                builder.setPositiveButton("Add", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        itemToAdd = input.getText().toString();
+                        addItems(itemToAdd);
+                    }
+                });
+                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+
+                builder.show();
+
             }
-        }
+        });
+    }
 
-        @Override
-        public long getItemId(int position) {
-            String item = getItem(position);
-            return mIdMap.get(item);
-        }
-
-        @Override
-        public boolean hasStableIds() {
-            return true;
-        }
-
+    public void addItems(String add) {
+        list.add(add);
+        adapter.notifyDataSetChanged();
     }
 }

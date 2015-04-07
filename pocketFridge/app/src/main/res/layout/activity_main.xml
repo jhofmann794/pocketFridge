@@ -4,8 +4,9 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainActivity"
-    android:background="@android:color/holo_red_light"
-    android:id="@+id/mainScreen">
+    android:background="@android:color/holo_blue_light"
+    android:id="@+id/mainScreen"
+    android:clickable="false">
 
     <Button
         android:layout_width="wrap_content"
@@ -13,28 +14,35 @@
         android:text="Grocery List"
         android:id="@+id/groceryButton"
         android:onClick="toGrocery"
+        android:background="@drawable/greenbutton_selector"
+        android:layout_marginBottom="25dp"
         android:layout_above="@+id/inventoryButton"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Inventory"
         android:id="@+id/inventoryButton"
+        android:onClick="toInventory"
+        android:background="@drawable/greenbutton_selector"
         android:layout_above="@+id/recipeButton"
-        android:layout_alignLeft="@+id/groceryButton"
-        android:layout_alignRight="@+id/groceryButton"
-        android:onClick="toInventory"/>
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="23dp"
+        android:layout_alignParentEnd="true" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Recipes"
         android:id="@+id/recipeButton"
-        android:layout_centerVertical="true"
-        android:layout_alignLeft="@+id/inventoryButton"
-        android:layout_alignRight="@+id/inventoryButton"
-        android:onClick="toRecipe"/>
+        android:onClick="toRecipe"
+        android:background="@drawable/greenbutton_selector"
+        android:layout_above="@+id/imageView"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true" />
 
     <Button
         android:layout_width="wrap_content"
@@ -44,15 +52,29 @@
         android:layout_alignParentBottom="true"
         android:layout_alignLeft="@+id/groceryButton"
         android:layout_alignRight="@+id/groceryButton"
-        android:onClick="toSettings"/>
+        android:onClick="toSettings"
+        android:background="@drawable/bluebutton_selector" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="pocketFridge!"
+        android:text="Pocket Fridge!"
         android:id="@+id/textView"
+        android:textSize="40dp"
+        android:textStyle="bold|italic"
+        android:typeface="serif"
+        android:textAlignment="center"
+        android:textColor="@android:color/background_dark"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:textSize="40dp" />
+        android:layout_centerHorizontal="true" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView"
+        android:background="@drawable/ic_launcher"
+        android:layout_above="@+id/settingsButton"
+        android:layout_centerHorizontal="true" />
+
 </RelativeLayout>
