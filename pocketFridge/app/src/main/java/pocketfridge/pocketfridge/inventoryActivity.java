@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.Menu;
@@ -30,6 +31,8 @@ public class inventoryActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inventory);
+
+        loadArray();
 
         final ListView listview2 = (ListView) findViewById(R.id.listView);
 
@@ -91,12 +94,41 @@ public class inventoryActivity extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
+    private boolean saveArray()
+    {
+        SharedPreferences sp = getSharedPreferences("Inventory.txt", Context.MODE_PRIVATE);;
+        SharedPreferences.Editor mEdit1 = sp.edit();
+        mEdit1.putInt("Inventory_size", list.size()); /* sKey is an array */
+
+        for (int i = 0; i < list.size();i++)
+        {
+            mEdit1.remove("Inventory_" + i);
+            mEdit1.putString("Inventory_" + i, list.get(i));
+        }
+
+        return mEdit1.commit();
+    }
+
+    public void loadArray()
+    {
+        SharedPreferences mSharedPreference1 = getSharedPreferences("Inventory.txt", Context.MODE_PRIVATE);;
+        list.clear();
+        int size = mSharedPreference1.getInt("Inventory_size", 0);
+
+        for(int i=0;i<size;i++)
+        {
+            list.add(mSharedPreference1.getString("Inventory_" + i, null));
+        }
+    }
+
+
     public void backToMain(View view) {
         Button button = (Button) findViewById(R.id.backInventory);
 
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 // Do something in response to button click
+                saveArray();
                 startActivity(new Intent(inventoryActivity.this, MainActivity.class));
             }
         });

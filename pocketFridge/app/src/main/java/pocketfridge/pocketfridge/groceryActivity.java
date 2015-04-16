@@ -5,7 +5,9 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.text.InputType;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -16,6 +18,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 
@@ -33,6 +36,9 @@ public class groceryActivity extends Activity {
         setContentView(R.layout.activity_grocery);
 
         final ListView listview = (ListView) findViewById(R.id.groceryList2);
+
+
+        loadArray();
 
 
         adapter = new ArrayAdapter(this,
@@ -58,6 +64,33 @@ public class groceryActivity extends Activity {
             }
 
         });
+    }
+
+    private boolean saveArray()
+    {
+        SharedPreferences sp = getSharedPreferences("Grocery.txt", Context.MODE_PRIVATE);;
+        SharedPreferences.Editor mEdit1 = sp.edit();
+        mEdit1.putInt("Grocery_size", list.size()); /* sKey is an array */
+
+        for (int i = 0; i < list.size();i++)
+        {
+            mEdit1.remove("Grocery_" + i);
+            mEdit1.putString("Grocery_" + i, list.get(i));
+        }
+
+        return mEdit1.commit();
+    }
+
+    public void loadArray()
+    {
+        SharedPreferences mSharedPreference1 = getSharedPreferences("Grocery.txt", Context.MODE_PRIVATE);;
+        list.clear();
+        int size = mSharedPreference1.getInt("Grocery_size", 0);
+
+        for(int i=0;i<size;i++)
+        {
+            list.add(mSharedPreference1.getString("Grocery_" + i, null));
+        }
     }
 
 
@@ -89,6 +122,7 @@ public class groceryActivity extends Activity {
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 // Do something in response to button click
+                saveArray();
                 startActivity(new Intent(groceryActivity.this, MainActivity.class));
             }
         });
@@ -147,6 +181,7 @@ public class groceryActivity extends Activity {
                     public void onClick(DialogInterface dialog, int which) {
                         Intent i = new Intent(groceryActivity.this, inventoryActivity.class);
                         i.putExtra("addToList", list);
+                        //list.clear();
                         startActivity(i);
                     }
                 });
