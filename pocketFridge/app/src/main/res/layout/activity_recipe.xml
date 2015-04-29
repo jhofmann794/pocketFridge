@@ -7,17 +7,6 @@
     tools:context="pocketfridge.pocketfridge.recipeActivity"
     android:background="@android:color/holo_blue_light">
 
-    <Button
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Back"
-        android:id="@+id/backRecipe"
-        android:onClick="backToMain"
-        android:layout_alignParentStart="false"
-        android:background="@drawable/bluebutton_selector"
-        android:layout_alignParentTop="true" />
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -25,7 +14,6 @@
         android:text="Recipes"
         android:id="@+id/textView2"
         android:textSize="35dp"
-        android:layout_alignTop="@+id/backRecipe"
         android:layout_centerHorizontal="true"
         android:typeface="serif" />
 
@@ -33,7 +21,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/recipeList"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/backRecipe" />
+        android:layout_below="@+id/textView2"
+        android:layout_alignParentEnd="true" />
 
 </RelativeLayout>

@@ -10,5 +10,8 @@
     <string name="settingsTitle">Change Settings</string>
     <string name="title_activity_inventory">inventoryActivity</string>
     <string name="title_activity_recipe">recipeActivity</string>
+    <string name="title_activity_food_edit">foodEditActivity</string>
+    <string name="title_activity_food">foodActivity</string>
+    <string name="title_activity_cooking">cookingActivity</string>
 
 </resources>

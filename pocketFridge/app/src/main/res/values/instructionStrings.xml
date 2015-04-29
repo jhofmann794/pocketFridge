@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="cookiesIns">PREHEAT oven to 375° F.\n
+
+    COMBINE flour, baking soda and salt in small bowl. Beat butter, granulated sugar, brown sugar and vanilla extract in large mixer bowl until creamy. Add eggs, one at a time, beating well after each addition. Gradually beat in flour mixture. Stir in morsels and nuts. Drop by rounded tablespoon onto ungreased baking sheets.\n\n
+    BAKE for 9 to 11 minutes or until golden brown. Cool on baking sheets for 2 minutes; remove to wire racks to cool completely.\n\n
+    PAN COOKIE VARIATION: Preheat oven to 350° F. Grease 15 x 10-inch jelly-roll pan. Prepare dough as above. Spread into prepared pan. Bake for 20 to 25 minutes or until golden brown. Cool in pan on wire rack. Makes 4 dozen bars.\n\n
+    SLICE AND BAKE COOKIE VARIATION:\n
+    PREPARE dough as above. Divide in half; wrap in waxed paper. Refrigerate for 1 hour or until firm. Shape each half into 15-inch log; wrap in wax paper. Refrigerate for 30 minutes.* Preheat oven to 375° F. Cut into 1/2-inch-thick slices; place on ungreased baking sheets. Bake for 8 to 10 minutes or until golden brown. Cool on baking sheets for 2 minutes; remove to wire racks to cool completely. Makes about 5 dozen cookies.\n\n
+    * May be stored in refrigerator for up to 1 week or in freezer for up to 8 weeks. \n\n
+    FOR HIGH ALTITUDE BAKING (5,200 feet): Increase flour to 2 1/2 cups. Add 2 teaspoons water with flour and reduce both granulated sugar and brown sugar to 2/3 cup each. Bake drop cookies for 8 to 10 minutes and pan cookie for 17 to 19 minutes.
+    </string>
+    <string name="brownieIns">
+        Position a rack in the lower third of the oven and preheat the oven to 325°F. Line the bottom and sides of the baking pan with parchment paper or foil, leaving an overhang on two opposite sides.\n\n
+        Combine the butter, sugar, cocoa, and salt in a medium heatproof bowl and set the bowl in a wide skillet of barely simmering water. Stir from time to time until the butter is melted and the mixture is smooth and hot enough that you want to remove your finger fairly quickly after dipping it in to test. Remove the bowl from the skillet and set aside briefly until the mixture is only warm, not hot.\n\n
+        Stir in the vanilla with a wooden spoon. Add the eggs one at a time, stirring vigorously after each one. When the batter looks thick, shiny, and well blended, add the flour and stir until you cannot see it any longer, then beat vigorously for 40 strokes with the wooden spoon or a rubber spatula. Stir in the nuts, if using. Spread evenly in the lined pan.\n\n
+        Bake until a toothpick plunged into the center emerges slightly moist with batter, 20 to 25 minutes. Let cool completely on a rack.\n\n
+        Lift up the ends of the parchment or foil liner, and transfer the brownies to a cutting board. Cut into 16 or 25 squares.
+    </string>
+    <string name="pizzaIns">
+        If using classic crust: Heat oven to 425°F. Sprinkle cornmeal on 12-inch square pizza stone. Unroll dough on pizza stone. Starting at center, press dough into 12-inch square, forming 1/2-inch rim. If using thin crust: Heat oven to 400°F. Spray or grease 15x10-inch or larger dark or nonstick cookie sheet. Sprinkle cornmeal on cookie sheet. Unroll dough on cookie sheet. Starting at center, press dough into 15x10-inch rectangle.\n\n
+        Spread pizza sauce over crust to within 1/2 inch of edges. Top with pepperoni and mozzarella cheese. Sprinkle with Parmesan cheese.\n\n
+        Bake classic crust 14 to 18 minutes, thin crust 8 to 12 minutes, or until crust is golden brown. Cut into 4 servings.
+    </string>
+
+</resources>

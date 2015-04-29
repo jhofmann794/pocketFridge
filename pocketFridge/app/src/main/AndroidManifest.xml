@@ -32,6 +32,18 @@
             android:name=".recipeActivity"
             android:label="@string/title_activity_recipe" >
         </activity>
+        <activity
+            android:name=".foodEditActivity"
+            android:label="@string/title_activity_food_edit" >
+        </activity>
+        <activity
+            android:name=".foodActivity"
+            android:label="@string/title_activity_food" >
+        </activity>
+        <activity
+            android:name=".cookingActivity"
+            android:label="@string/title_activity_cooking" >
+        </activity>
     </application>
 
 </manifest>
